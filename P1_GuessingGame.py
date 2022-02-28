@@ -1,15 +1,7 @@
 from multiprocessing.sharedctypes import Value
 import random
 from tracemalloc import start
-"""
-Instructions:
-As a player of the game, I should see a some kind of text header, welcome or game intro message.
-A random number should be chosen that is within the range.
-As a player of the game, I should be continuously prompted for a guess until I get it right.
-As a player of the game, after an incorrect guess I should be told if my answer is higher or lower than the answer, so that I can narrow down my guesses.
-As a player of the game, after the game ends I should be shown my number of attempts at guessing.
-When the game ends, an ending message is shown to the player.
-"""
+
 
 ranges = list(range(1,11))
 high_score = []
@@ -29,9 +21,9 @@ def start_game():
     
     except TypeError as err:
         print(err)
-        return    
+        return
 
-    coregame()
+    coregame()    
 
     while(start_over.lower() == 'yes'): 
         try:
@@ -65,12 +57,12 @@ def coregame():
     finalscore = 0
 
     num_provided = 0 # 8
-    random_num = (random.randint(1,11)) # 5
-    # guesses = 3
-
+    random_num = random.randint(1,10) 
 
     while (num_provided != random_num):     
         num_provided = int(input("Pick a number between 1- 10:  "))
+
+        guesses +=1
 
         if num_provided not in ranges:
             print("You did not provide a guess with the range provided, please try again")
@@ -90,15 +82,11 @@ def coregame():
             print(f'Its taken', guesses, ' tries to reach the correct number')    
             # return None
 
-        guesses +=1
-        
-        
-
         high_score.append(guesses)
-        
-        if guesses == 9:
-            print(f"You're out of guesses. The number was {random_num}")
-            break
+        print(high_score)
+        # if guesses == 9:
+        #     print(f"You're out of guesses. The number was {random_num}")
+        #     break
 
 
 start_game()
