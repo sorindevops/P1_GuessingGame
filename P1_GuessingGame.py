@@ -17,11 +17,13 @@ def start_game():
         person_name = input("Hello there! May I have your name?! ")
         
         if person_name.isalpha() == False:
-            raise TypeError("Please try again, letters only")
+            print("Please try again, letters only")
     
     except TypeError as err:
         print(err)
         return
+    else:
+        start_game()
 
     coregame()    
 
