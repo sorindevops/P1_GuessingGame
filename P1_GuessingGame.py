@@ -82,8 +82,8 @@ def coregame():
             print(f'Its taken', guesses, ' tries to reach the correct number')    
             # return None
 
-        high_score.append(guesses)
-        print(high_score)
+            high_score.append(guesses)
+            
         # if guesses == 9:
         #     print(f"You're out of guesses. The number was {random_num}")
         #     break
