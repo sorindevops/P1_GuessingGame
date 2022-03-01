@@ -22,13 +22,7 @@ def start_game():
 
     except TypeError as err:
         print(err)
-<<<<<<< Updated upstream
-        
 
-=======
-        return
-        
->>>>>>> Stashed changes
     coregame()    
 
     while(start_over.lower() == 'yes'): 
