@@ -22,8 +22,13 @@ def start_game():
 
     except TypeError as err:
         print(err)
+<<<<<<< Updated upstream
         
 
+=======
+        return
+        
+>>>>>>> Stashed changes
     coregame()    
 
     while(start_over.lower() == 'yes'): 
@@ -48,7 +53,7 @@ def start_game():
                 finalscore = min(high_score)
                 print(f"{person_name}, your high score is {finalscore}!")
                 print(f'Thank you for playing {person_name}. Goodbye!') 
-                return None             
+                break          
     # 5. Let the player know the game is ending, or something that indicates the game is over.
 
     # print(high_score)
