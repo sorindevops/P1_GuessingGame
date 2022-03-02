@@ -19,7 +19,8 @@ def start_game():
         if person_name.isalpha() == False:
             print("Please try again, letters only")
             start_game()
-
+            return 
+            
     except TypeError as err:
         print(err)
 
