@@ -3,6 +3,7 @@ import random
 from tracemalloc import start
 
 
+
 ranges = list(range(1,11))
 high_score = []
 
@@ -61,27 +62,32 @@ def coregame():
     random_num = random.randint(1,10) 
 
     while (num_provided != random_num):     
-        num_provided = int(input("Pick a number between 1- 10:  "))
-
-        guesses +=1
-
-        if num_provided not in ranges:
-            print("You did not provide a guess with the range provided, please try again")
-            continue
-
-        if num_provided > random_num:
-            print("It's lower")
-            # go back to num_provided to repeat process
+        try:
+            num_provided = int(input("Pick a number between 1- 10:  "))
         
-        elif num_provided < random_num:
-            print("It's higher")
-            # go back to num_provided to repeat process
+        except ValueError as err:
+            print("You did not input a number, please try again.")
         
-        elif num_provided == random_num:
-            print("You got it! The answer is correct. This round is now over.")
-            # 4. Once the guess is correct, stop looping, inform the user they "Got it" 
-            print(f'Its taken', guesses, ' tries to reach the correct number')    
-            # return None
+        else:
+            guesses +=1
+
+            if num_provided not in ranges:
+                print("You did not provide a guess with the range provided, please try again")
+                continue
+
+            if num_provided > random_num:
+                print("It's lower")
+                # go back to num_provided to repeat process
+            
+            elif num_provided < random_num:
+                print("It's higher")
+                # go back to num_provided to repeat process
+            
+            elif num_provided == random_num:
+                print("You got it! The answer is correct. This round is now over.")
+                # 4. Once the guess is correct, stop looping, inform the user they "Got it" 
+                print(f'Its taken', guesses, ' tries to reach the correct number')    
+                # return None
 
             high_score.append(guesses)
             
