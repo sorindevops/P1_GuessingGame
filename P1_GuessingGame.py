@@ -41,7 +41,7 @@ def start_game():
                 
         else:
             if start_over.lower() == 'yes':
-                print(f"Your last score was " + str(max(high_score)) + " try to beat it!")
+                print(f"Your last score was " + str(min(high_score)) + " try to beat it!")
                 coregame()
             elif min(high_score) == 0:
                 print("You got the right answer on the first try! Do you want to test your luck again?!")    
@@ -86,7 +86,7 @@ def coregame():
             elif num_provided == random_num:
                 print("You got it! The answer is correct. This round is now over.")
                 # 4. Once the guess is correct, stop looping, inform the user they "Got it" 
-                print(f'Its taken', guesses, ' tries to reach the correct number')    
+                # print(f'Its taken', guesses, ' tries to reach the correct number')    
                 # return None
 
             high_score.append(guesses)
