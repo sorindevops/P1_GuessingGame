@@ -1,3 +1,4 @@
+from mimetypes import guess_extension
 from multiprocessing.sharedctypes import Value
 import random
 from tracemalloc import start
@@ -5,13 +6,12 @@ from tracemalloc import start
 
 
 ranges = list(range(1,11))
-high_score = []
-
+high_scores = []
 
 def start_game():
     start_over = 'yes'
     print('Welcome to the Guessing Game!')
-    finalscore = 0
+
 
     # 1. Display an intro/welcome message to the player.``
     try: 
@@ -24,8 +24,10 @@ def start_game():
             
     except TypeError as err:
         print(err)
-
+        
     coregame()    
+
+    
 
     while(start_over.lower() == 'yes'): 
         try:
@@ -41,18 +43,18 @@ def start_game():
                 
         else:
             if start_over.lower() == 'yes':
-                print(f"Your last score was " + str(min(high_score)) + " try to beat it!")
                 coregame()
-            elif min(high_score) == 0:
+
+            elif min(high_scores) == 0:
                 print("You got the right answer on the first try! Do you want to test your luck again?!")    
             else:
-                finalscore = min(high_score)
-                print(f"{person_name}, your high score is {finalscore}!")
+                
+                print(f"{person_name} your high score is: "  + str(min(high_scores)))
                 print(f'Thank you for playing {person_name}. Goodbye!') 
                 break          
     # 5. Let the player know the game is ending, or something that indicates the game is over.
 
-    # print(high_score)
+    
 
 def coregame():
     guesses = 0
@@ -70,7 +72,7 @@ def coregame():
         
         else:
             guesses +=1
-
+            
             if num_provided not in ranges:
                 print("You did not provide a guess with the range provided, please try again")
                 continue
@@ -89,12 +91,11 @@ def coregame():
                 # print(f'Its taken', guesses, ' tries to reach the correct number')    
                 # return None
 
-            high_score.append(guesses)
-            
-        # if guesses == 9:
-        #     print(f"You're out of guesses. The number was {random_num}")
-        #     break
+    print(f"Your last score was " + str(guesses) + " try to beat it!")
 
-
+    high_scores.append(guesses)  
+                # set the value of guesses guesses to highscore
+    # elif high_score < guesses: ## we don't need it because we aren't doing with it. 
+    # # set keep value of high score
 
 start_game()
