@@ -43,6 +43,7 @@ def start_game():
                 
         else:
             if start_over.lower() == 'yes':
+                print(f"Alright, {person_name} try to beat your last high score of: "  + str(min(high_scores)))
                 coregame()
 
             elif min(high_scores) == 0:
@@ -93,7 +94,8 @@ def coregame():
 
     print(f"Your last score was " + str(guesses) + " try to beat it!")
 
-    high_scores.append(guesses)  
+    high_scores.append(guesses)
+
                 # set the value of guesses guesses to highscore
     # elif high_score < guesses: ## we don't need it because we aren't doing with it. 
     # # set keep value of high score
